@@ -1,0 +1,12 @@
+/* HomePage.css */
+.bg-aqua {
+  background-color: #2897cb;
+}
+
+.btn-lg {
+  background-color: #f4875c;
+}
+
+.btn-lg:hover {
+  background-color: #f1a972;
+}
