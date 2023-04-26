@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './GamePage.css';
 
@@ -9,6 +9,11 @@ function GamePage() {
   const [startTime, setStartTime] = useState(null);
   const navigate = useNavigate();
 
+  const startGame = useCallback(() => {
+    setGrid(generateGrid());
+    setStartTime(Date.now());
+  }, []);
+
   useEffect(() => {
     if (countdown > 0) {
       setTimeout(() => setCountdown(countdown - 1), 1000);
@@ -16,10 +21,6 @@ function GamePage() {
       startGame();
     }
   }, [countdown, startGame]);
-  function startGame() {
-    setGrid(generateGrid());
-    setStartTime(Date.now());
-  };
 
   function generateGrid() {
     const numbers = Array.from({ length: 25 }, function (_, i) { return i + 1 });
